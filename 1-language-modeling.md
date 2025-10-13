@@ -5,7 +5,9 @@ The goal of this assignment is to design, implement, and evaluate a small-scale 
 1. A **Recurrent Neural Network (RNN)** variant (e.g., LSTM, GRU)  
 2. A **Transformer-based model**
 
-Optionally, students may explore or experiment with a **“Baby Dragon Hatchling GPU model”** ([BDH-GPU](https://github.com/pathwaycom/bdh)) — a very recent model designed to resamble the organization of human brain [paper](https://arxiv.org/abs/2509.26507).
+Both models have to be trained for the causal language modeling task (prediction of the next token).
+
+Optionally, students may explore or experiment with a **“Baby Dragon Hatchling GPU model”** ([BDH-GPU](https://github.com/pathwaycom/bdh)) - a very recent model designed to resamble the organization of human brain.
 
 ---
 
@@ -18,9 +20,13 @@ You are encouraged to adapt the **size and complexity** of your models to fit th
 
 ### **Data**
 You are free to choose any text corpus as your **training data**.  
-If you do not have a preferred dataset, you can use the **[Kobza Ukrainian dataset](https://huggingface.co/datasets/Goader/kobza)**, which contains a rich collection of Ukrainian texts suitable for language modeling.
+If you do not have a preferred dataset, you can use **[Speakleash Polish dataset](https://github.com/speakleash/speakleash)** or the **[Kobza Ukrainian dataset](https://huggingface.co/datasets/Goader/kobza)**. The second dataset make sense only if you know Ukrainian.
 
 For evaluation, you should use a **held-out Wikipedia corpus** in a language of your choice.
+
+### **Inference**
+Once the model is trained, use inference to obtain completion of at least 10 prompts of your choice. 
+Present the prompts and the outputs in the report.
 
 ---
 
@@ -44,14 +50,15 @@ Your submission should include:
   - Model architecture details (layers, parameters, optimizer, etc.)  
   - Description of the dataset(s) used  
   - Evaluation results (perplexity and time metrics)  
-  - Comparison and interpretation of findings  
+  - Comparison of prompt completions and interpretation of findings  
   - Discussion of implementation challenges and insights  
 
 ---
 
 ### **Study Material**
 Before starting, carefully read the paper:  
-**“[Attention Is All You Need](https://arxiv.org/abs/1706.03762)”** (Vaswani et al., 2017)  
+* **[Attention Is All You Need](https://arxiv.org/abs/1706.03762)** (Vaswani et al., 2017) 
+* **[The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain](https://arxiv.org/abs/2509.26507) (Kosowski at al., 2025)
 
 This paper provides the theoretical foundation for the Transformer architecture and its advantages over RNN-based models.
 
