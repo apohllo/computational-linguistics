@@ -58,7 +58,7 @@ Your submission should include:
 ### **Study Material**
 Before starting, carefully read the paper:  
 * **[Attention Is All You Need](https://arxiv.org/abs/1706.03762)** (Vaswani et al., 2017) 
-* **[The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain](https://arxiv.org/abs/2509.26507) (Kosowski at al., 2025)
+* **[The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain](https://arxiv.org/abs/2509.26507)** (Kosowski at al., 2025)
 
 This paper provides the theoretical foundation for the Transformer architecture and its advantages over RNN-based models.
 
