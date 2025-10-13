@@ -5,7 +5,7 @@ The goal of this assignment is to design, implement, and evaluate a small-scale 
 1. A **Recurrent Neural Network (RNN)** variant (e.g., LSTM, GRU)  
 2. A **Transformer-based model**
 
-Optionally, students may explore or experiment with a **“dragon hatchling baby GPU model”** — a highly compact or custom hybrid model tailored for very limited GPU resources.
+Optionally, students may explore or experiment with a **“Baby Dragon Hatchling GPU model”** ([BDH-GPU](https://github.com/pathwaycom/bdh)) — a very recent model designed to resamble the organization of human brain [paper](https://arxiv.org/abs/2509.26507).
 
 ---
 
@@ -18,7 +18,7 @@ You are encouraged to adapt the **size and complexity** of your models to fit th
 
 ### **Data**
 You are free to choose any text corpus as your **training data**.  
-If you do not have a preferred dataset, you can use the **Kobza Ukrainian dataset**, which contains a rich collection of Ukrainian texts suitable for language modeling.
+If you do not have a preferred dataset, you can use the **[Kobza Ukrainian dataset](https://huggingface.co/datasets/Goader/kobza)**, which contains a rich collection of Ukrainian texts suitable for language modeling.
 
 For evaluation, you should use a **held-out Wikipedia corpus** in a language of your choice.
 
@@ -51,7 +51,7 @@ Your submission should include:
 
 ### **Study Material**
 Before starting, carefully read the paper:  
-**“Attention Is All You Need”** (Vaswani et al., 2017)  
+**“[Attention Is All You Need](https://arxiv.org/abs/1706.03762)”** (Vaswani et al., 2017)  
 
 This paper provides the theoretical foundation for the Transformer architecture and its advantages over RNN-based models.
 
