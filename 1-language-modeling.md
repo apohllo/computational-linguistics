@@ -51,7 +51,7 @@ Your submission should include:
 
 ### **Study Material**
 Before starting, carefully read the paper:  
-📘 **“Attention Is All You Need”** (Vaswani et al., 2017)  
+**“Attention Is All You Need”** (Vaswani et al., 2017)  
 
 This paper provides the theoretical foundation for the Transformer architecture and its advantages over RNN-based models.
 
