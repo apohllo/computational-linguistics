@@ -47,7 +47,8 @@ Your models should be evaluated using **two key metrics**:
 Your submission should include:
 - The **source code** for both models.  
 - A **short report** (2–4 pages) including:
-  - Model architecture details (layers, parameters, optimizer, etc.)  
+  - Model architecture details (layers, parameters, optimizer, etc.)
+  - GPU/CPU/TPU used
   - Description of the dataset(s) used  
   - Evaluation results (perplexity and time metrics)  
   - Comparison of prompt completions and interpretation of findings  
