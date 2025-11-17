@@ -24,7 +24,7 @@ Examples include (but are not limited to):
 - Amazon Reviews  
 - Tweet Eval (sentiment or hate speech)  
 - Toxic Comment Classification
-- [A language model analyzing Polish youth slang](https://huggingface.co/datasets/jziebura/polish_youth_slang_classification)
+- [Polish youth slang](https://huggingface.co/datasets/jziebura/polish_youth_slang_classification)
 
 Important requirements:
 - The dataset must involve **full text classification** (not token classification).  
