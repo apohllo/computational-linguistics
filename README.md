@@ -6,3 +6,4 @@ This course is dedicated to the exploration of language models, specifically the
 
 1. [Language modeling](1-language-modeling.md)
 2. [Tokenization](2-tokenization.md)
+3. [Fine-tuning](3-fine-tuning.md)
