@@ -1,14 +1,14 @@
 ## **Course Task: Fine-Tuning vs. From-Scratch Training for Text Classification**
 
 ### **Objective**
-The goal of this assignment is to compare two approaches to training decoder-only language models for **full-text classification**:
+The goal of this assignment is to compare two approaches to training decoder-only (or encoder-only) language models for **full-text classification**:
 
 1. **From-scratch training**  
    - A small decoder-only model created, initialized, and trained entirely by the student.  
    - Designed to avoid overfitting by limiting parameter count.  
 
 2. **Fine-tuning a pre-trained model**  
-   - Select a suitable pre-trained decoder-only model from Hugging Face.  
+   - Select a suitable pre-trained decoder-only (or encoder-only) model from Hugging Face.  
    - Fine-tune it on the same downstream dataset.  
 
 Students should analyze the differences in training behavior, generalization, stability, and performance.
@@ -47,17 +47,18 @@ Important requirements:
   - Use a tokenizer of your choice (trained or pre-trained).  
   - Limit sequence length based on your GPU memory.  
   - Expect the from-scratch model to require longer training and achieve weaker results.
+ 
+You can also train a encoder-only model from scratch, but this will require additional works, since the previous labs were concentrated on decoder-only models.
 
 #### **2. Fine-Tuned Pre-trained Model**
-- Select a **decoder-only model available on Hugging Face** (e.g., GPT-2, GPT-Neo, GPT-J, Pythia, Phi-1.5 or any smaller model depending on your GPU).  
+- Select a **decoder-only (or encoder-only) model available on Hugging Face** (e.g., GPT-2, GPT-Neo, GPT-J, Pythia, Phi-1.5, Bielik, for decoder-only models; mBERT, Polish RoBERTa, HerBERT for encoder-only models).  
 - Attach a **classification head**:
   - Add an MLP on top of the final transformer block.  
   - Or use an existing Hugging Face classification architecture if compatible.
 - Fine-tune the entire model or choose a technique such as:
-  - LoRA  
-  - Freeze-then-unfreeze  
-  - Adapter modules  
-- Expect this model to train **much faster**, converge better, and achieve higher performance.
+  - Unfreez speficic layers
+  - [LoRA](https://huggingface.co/docs/peft/main/conceptual_guides/lora)
+to speed-up the training process compared to full-model training.
 
 ---
 
@@ -88,7 +89,7 @@ You should also:
 - Set up a reasonable maximum sequence length (e.g., 128–512 tokens).
 
 #### **2. Running the From-Scratch Experiment**
-- Initialize the small decoder-only model.  
+- Initialize the small decoder/encoder-only model.  
 - Add a classification head.  
 - Train with:
   - AdamW optimizer  
@@ -173,7 +174,7 @@ Discuss:
 
 ### **Summary**
 - Select a moderate-sized classification dataset.  
-- Train **two decoder-only models**:
+- Train **two decoder/encoder-only models**:
   1. A **small from-scratch model**  
   2. A **fine-tuned pre-trained model**  
 - Compare performance, training behavior, parameter count, and computational efficiency.  
