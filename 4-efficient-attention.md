@@ -11,8 +11,8 @@ Using the *same dataset*, *same model architecture*, and *same hyperparameters* 
 
 You will implement **four training regimes**:
 
-1. **Baseline + BF16 mixed precision**
-2. **FlashAttention**
+1. **Baseline with TF32 + BF16 mixed precision**
+2. **FlashAttention** (you can use FlashAttention 2)
 3. **Windowed (local) attention**
 4. **Gradient checkpointing**
 
@@ -22,30 +22,40 @@ Use the **same model checkpoint**, **same tokenizer**, **same dataset**, and **s
 
 ## Techniques to Compare
 
-### 1. BF16 Mixed Precision (baseline)
-Train the model using:
-- `torch.cuda.amp.autocast(dtype=torch.bfloat16)`
-- `GradScaler` if needed
+### 0. Full precision training (baseline)
+- use full precision (FP/TF32) for model training
+- define the largest batch size that fits into memory
 
-This serves as the **baseline configuration**.  
-It should be implemented **before** the other techniques.
+If the batch size is very small, or does not fit into memory even for BS=1, reduce the model size: 
+- number of layers,
+- sequence length,
+- hidden dimension.
+
+It should be implemented **before** the other techniques. 
+Observe the memory consumption and make sure the largest batch size is used.
+
+### 1. BF16 Automatic Mixed Precision
+Use `torch.cuda.amp.autocast(dtype=torch.bfloat16)`
+
+This is the first optimization. 
+* Run the experiment with the same settings as in the baseline and measure the memory consumption.
+* Compare the final perplexity after 1 epoch.
+* Repeat the experiment with the largest batch size possible, compare the final perplexity and training time.
 
 ### 2. FlashAttention
 Replace the default attention mechanism with **FlashAttention** (v2 preferred, v1 acceptable).
 
-You may use:
-- `flash-attn` library  
-- Hugging Face integration in `transformers` (if your model supports it)  
-
-Aim to maximize throughput and batch size.
+You should use the flash-attn library. Check the documentation, to reduce the installation time.
+Run the same experiments as with BF16. Take into account that FA only supports automatic BF16 mixed precision.
 
 ### 3. Windowed (Local) Attention
-Replace full self-attention with sliding-window attention (e.g., `Longformer-style`, `Llama local attention`, custom block-local attention).
+Replace full self-attention with sliding-window attention. Use the implementation provided by `flash-attn`.
 
 Requirements:
 - Window size must be configurable
 - Model architecture should stay otherwise identical
 
+Repeat the same experiments as in setup 1.
 Measure the trade-off between memory reduction and degradation of perplexity.
 
 ### 4. Gradient Checkpointing
@@ -53,11 +63,9 @@ Enable:
 
 ```python
 model.gradient_checkpointing_enable()
-
-
-or use manual checkpointed layers if needed.
-
-Measure memory savings and increased computation time.
+```
+Measure memory savings and increased computation time. 
+Repeat the same experiments as in setup 1.
 
 ## Dataset
 
