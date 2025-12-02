@@ -103,7 +103,7 @@ After one epoch:
 * Use identical evaluation settings across experiments.
 
 ## Deliverables
-1. Code
+### Code
 
 Submit scripts or notebooks containing:
 * Model definition
@@ -117,7 +117,7 @@ Separate configuration toggles for:
 * memory profiling code
 * evaluation code (perplexity)
 
-2. Report (4–6 pages)
+### Report (4–6 pages)
 
 Your report must include:
 * Experimental Setup
