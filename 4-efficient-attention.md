@@ -68,18 +68,13 @@ model.gradient_checkpointing_enable()
 Measure memory savings and increased computation time. 
 Repeat the same experiments as in setup 1.
 
-## Dataset
+### Dataset
 
 Use the same dataset as in the 1st assignment.
 
-* Use exactly the same number of tokens across all experiments
-* Train for 1 epoch only
-* Fix: sequence length, batch size (as high as fits), shuffle, tokenizer
-
-## Model
+### Model
 
 Use the model from the 1st assignment.
-
 
 ## Measurements & Tools
 ### Memory Profiling
