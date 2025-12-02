@@ -149,10 +149,7 @@ Provide interpretations and not just raw numbers.
 ## Suggested Reading Materials
 * *FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness*, Tri Dao et al., 2022.
 * *FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning*, Tri Dao et al., 2023.
-* *Longformer: The Long-Document Transformer*, Iz Beltagy et al., 2020.
 * *Efficient Transformers: A Survey*, Tay et al., 2020.
-* NVIDIA AMP documentation
-* PyTorch Automatic Mixed Precision Guide
 * *Training Deep Nets with Sublinear Memory Cost*, Chen et al., 2016.
 
 ## Implementation Plan
