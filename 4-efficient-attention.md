@@ -160,6 +160,8 @@ Provide interpretations and not just raw numbers.
    * Fix sequence length
 2. Implement baseline model
    * Small GPT-like decoder-only Transformer
+   * Full FP32 model
+3. Implement BF16 optimization
    * BF16 mixed precision
 3. Implement the model using FlashAttention
    * Switch attention kernel
@@ -171,6 +173,7 @@ Provide interpretations and not just raw numbers.
 5. Use Gradient Checkpointing
    * Enable checkpointing
    * Measure memory savings and compute overhead
+5. (Optional) Use grouped KV attention.
 6. Profile memory
    * Run 20 warm-up steps
    * Confirm memory peak using PyTorch memory profiler
