@@ -64,3 +64,9 @@ Your report should include:
 - Emphasis is on **reasoning structure**, not language fluency.  
 - Clear visualizations or tables for ARC and Sudoku results are encouraged.  
 - Manual analysis is a required component of the evaluation.
+
+---
+
+### Resources
+
+["Less is More: Recursive Reasoning with Tiny Networks", Alexia Jolicoeur-Martineau](https://arxiv.org/pdf/2510.04871)
