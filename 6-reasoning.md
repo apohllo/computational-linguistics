@@ -41,7 +41,8 @@ Train a **Tiny Reasoning Model (TRM)** with one of the following architectures:
 
 ### **Comparison with Large Models**
 Select **one commercial or open-weight LLM** (e.g., GPT-style, LLaMA-style) and:
-- Evaluate it on **5 examples from each dataset**.  
+- Evaluate it on **5 examples from each dataset**.
+- Try different prompting techniques and different input representation to better align the data with the model (e.g. you can try to make sure that the input is always represented with the same number of tokens, corresponding to the problem size).
 
 - Compare:
   - Success rate  
