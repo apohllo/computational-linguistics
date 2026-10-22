@@ -26,13 +26,24 @@ Each student must prepare **three tokenizers**:
 
 ### **Model Training**
 - Train **three identical language models** (same architecture, hyperparameters, and data) — one for each tokenizer.  
-- The architecture can be an Transformer model of your choice (reuse the setup from the previous assignment if possible).  
+- The architecture should be the default implementation from PyTorch library with a small number of layers.  
 - Ensure that only the tokenizer differs across experiments.
 
 ---
 
+### **Data**
+
+As the primary resource you should use Polish data from the [Speakleach corpus](https://github.com/speakleash/speakleash) (obviously a sample from it). You can also use a different corpus, but it should include Polish texts.
+The dataset should be divided into two parts:
+* training - the part that is used to determine the dictionary, for the whitespace tokenizer and the data used to train the SentencePiece tokenizer
+* evaluation - the part that is used to compute the perplexity, OOV, etc. (see below).
+
+These two parts has to be distinct, there should be 0 overlap between them.
+
+---
+
 ### **Evaluation Metrics**
-Each trained model must be evaluated using:
+Each trained model must be evaluated using on a dataset separate from the dataset used to define the tokenizer (i.e. dataset used to determine the words or a dataset used to train the tokenizer):
 
 1. **Perplexity**
    - Compute both:
