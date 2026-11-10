@@ -1,15 +1,19 @@
-## **Course Task: Fine-Tuning vs. From-Scratch Training for Text Classification**
+## **Course Task: Text Classification with decoder only models**
 
 ### **Objective**
-The goal of this assignment is to compare two approaches to training decoder-only (or encoder-only) language models for **full-text classification**:
+The goal of this assignment is to compare approaches of classification with decoder-only language models:
 
 1. **From-scratch training**  
    - A small decoder-only model created, initialized, and trained entirely by the student.  
    - Designed to avoid overfitting by limiting parameter count.  
 
 2. **Fine-tuning a pre-trained model**  
-   - Select a suitable pre-trained decoder-only (or encoder-only) model from Hugging Face.  
-   - Fine-tune it on the same downstream dataset.  
+   - Select a suitable pre-trained decoder-only model from Hugging Face.  
+   - Fine-tune it on the same downstream dataset.
+  
+3. **Zero-shot Classification with Token-Class Prediction**
+   - Use the same model as in 2.
+   - Use constraint decoding and select appropriate classes as classification indicators.
 
 Students should analyze the differences in training behavior, generalization, stability, and performance.
 
@@ -43,15 +47,15 @@ Important requirements:
 - Add a **classification head**:
   - Either take the final hidden state of the last token and feed it into an MLP classifier, **or**
   - Use mean/max pooling over hidden states followed by an MLP classifier.
+  - Alternatively you can add an instruction at the end and compare probability of two (or more) output tokens representing the competing classes.
 - Training considerations:
   - Use a tokenizer of your choice (trained or pre-trained).  
   - Limit sequence length based on your GPU memory.  
-  - Expect the from-scratch model to require longer training and achieve weaker results.
  
 You can also train a encoder-only model from scratch, but this will require additional works, since the previous labs were concentrated on decoder-only models.
 
 #### **2. Fine-Tuned Pre-trained Model**
-- Select a **decoder-only (or encoder-only) model available on Hugging Face** (e.g., GPT-2, GPT-Neo, GPT-J, Pythia, Phi-1.5, Bielik, for decoder-only models; mBERT, Polish RoBERTa, HerBERT for encoder-only models).  
+- Select a **decoder-only model available on Hugging Face** (e.g., GPT-2, GPT-Neo, GPT-J, Pythia, Phi-1.5, Bielik, for decoder-only models).  
 - Attach a **classification head**:
   - Add an MLP on top of the final transformer block.  
   - Or use an existing Hugging Face classification architecture if compatible.
@@ -107,7 +111,13 @@ You should also:
   - Monitor validation accuracy/f1 regularly  
 - Compare training curves with the from-scratch run.
 
-#### **4. Running Evaluation**
+#### **4. Running Prediction using constrained decoding**
+- Load model + tokenizer
+- Define tokens corresponding to classes
+- Define simple prompt such as "Based on the provided context, the sentiment of the text is:"
+- Computer the probability distribution of the classes using built in constrained decoding.
+
+#### **5. Running Evaluation**
 - Compute performance metrics on the held-out test set.  
 - Measure inference time (e.g., classify 1,000 examples).  
 - Analyze training logs and learning curves.
@@ -160,7 +170,6 @@ Discuss:
 
 ### **Tips & Hints**
 
-- **Expect the from-scratch model to struggle**, unless it is very small and the task is easy.  
 - **Do not oversize the from-scratch model** — it will overfit immediately.  
 - **The fine-tuned model may require careful LR scheduling** to avoid catastrophic forgetting.  
 - Try using **gradient accumulation** if GPU memory is limited.  
@@ -176,6 +185,7 @@ Discuss:
 - Select a moderate-sized classification dataset.  
 - Train **two decoder/encoder-only models**:
   1. A **small from-scratch model**  
-  2. A **fine-tuned pre-trained model**  
+  2. A **fine-tuned pre-trained model**
+- Use an existing model with constrained decoding
 - Compare performance, training behavior, parameter count, and computational efficiency.  
 - Submit code and a detailed comparative report.
