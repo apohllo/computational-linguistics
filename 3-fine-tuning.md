@@ -117,9 +117,12 @@ You should also:
 
 #### **4. Running Prediction using constrained decoding**
 - Load model + tokenizer
-- Define tokens corresponding to classes
-- Define simple prompt such as "Based on the provided context, the sentiment of the text is:"
-- Computer the probability distribution of the classes using built in constrained decoding.
+- Define tokens corresponding to classes in the category, such as *positive*/*negative* for the **sentiment** category.
+- Define simple prompt such as "<text> Based on the provided context, the sentiment of the text is:"
+- Compute the probability distribution of the classes using constrained decoding.
+- The idea of the constrained decoding is that we allow the model only to predict the texts that correspond to the allowed classes, such as *positive*/*negative*. If the classes do not share any prefix, this is the same as predicting the probability of the first token for each class.
+- The probability distribution is computed according to the softmax over the predicted values. You need to ask the model to return logits, rather than probability distribution.
+- The default approach is that for a binary problem you return the class with the highest probability (so prob distribution does not have to be computed). But you can also apply a different threshold, if the dataset in question is highly unbalanced.
 
 #### **5. Running Evaluation**
 - Compute performance metrics on the held-out test set.  
@@ -132,9 +135,9 @@ You should also:
 
 #### **1. Code**
 Provide:
-- Model definitions for both approaches  
-- Training scripts  
-- Evaluation scripts  
+- Model definitions for all approaches  
+- Training scripts
+- Evaluation scripts
 - Tokenization/configuration code  
 
 #### **2. Report (4–6 pages)**
@@ -143,7 +146,8 @@ Your report must include:
 ##### **Model Descriptions**
 - Size, parameter count, architecture outline  
 - Description of the classification head  
-- Tokenizer type and vocabulary size  
+- Tokenizer type and vocabulary size
+- Class names for the constrained classification and threshold, if different from 0.5
 
 ##### **Dataset Description**
 - Basic statistics  
@@ -158,8 +162,8 @@ Your report must include:
 
 ##### **Comparative Analysis**
 Discuss:
-- Why fine-tuning outperforms from-scratch  
-- When training from scratch might be preferred  
+- Strengths and weaknesses of each approach
+- When each of the method might be preferred  
 - Sensitivity to model size and dataset size  
 - Practical insights from implementation
 
@@ -174,9 +178,9 @@ Discuss:
 
 ### **Tips & Hints**
 
-- **Do not oversize the from-scratch model** — it will overfit immediately.  
-- **The fine-tuned model may require careful LR scheduling** to avoid catastrophic forgetting.  
-- Try using **gradient accumulation** if GPU memory is limited.  
+- **Do not oversize the from-scratch model** — it will overfit quickly.  
+- **The fine-tuned model may require careful LR scheduling** to avoid catastrophic forgetting. Usually 10^-4 - 10^-5 is the max LR value yielding reasonable training.
+- Try using **gradient accumulation** if GPU memory is limited. Still a batch size of 1 is pretty bad. It's better to constraint the length of the input and use larger batch size
 - Use **early stopping** for both models to get clean comparisons.  
 - If models diverge:
   - Lower the learning rate  
@@ -187,9 +191,9 @@ Discuss:
 
 ### **Summary**
 - Select a moderate-sized classification dataset.  
-- Train **two decoder/encoder-only models**:
+- Train **two decoder-only models**:
   1. A **small from-scratch model**  
   2. A **fine-tuned pre-trained model**
-- Use an existing model with constrained decoding
+- Use an existing model with constrained decoding.
 - Compare performance, training behavior, parameter count, and computational efficiency.  
 - Submit code and a detailed comparative report.
