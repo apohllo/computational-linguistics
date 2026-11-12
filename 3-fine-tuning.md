@@ -61,8 +61,12 @@ You can also train a encoder-only model from scratch, but this will require addi
   - Or use an existing Hugging Face classification architecture if compatible.
 - Fine-tune the entire model or choose a technique such as:
   - Unfreez speficic layers
-  - [LoRA](https://huggingface.co/docs/peft/main/conceptual_guides/lora)
+  - [LoRA](https://huggingface.co/docs/peft/main/conceptual_guides/lora) 
 to speed-up the training process compared to full-model training.
+
+
+#### **3. Constrained prediction**
+- This model is not trained for the task, so there aren't any training instructions. The scheme is called "zero-shot classification", due to the fact that we don't apply any training and we don't provide any examples for the model.
 
 ---
 
