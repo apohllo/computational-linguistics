@@ -135,66 +135,9 @@ For each technique include:
 * Final perplexity
 * Present results in clear comparison tables.
 
-## Analysis & Discussion
-
-Discuss:
-* Why some techniques reduce memory more effectively
-* Why some techniques slow down training
-* The trade-off between memory, speed, and perplexity
-* Whether combining techniques would help (optional)
-
-Provide interpretations and not just raw numbers.
-
 ## Suggested Reading Materials
 * *FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness*, Tri Dao et al., 2022.
 * *FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning*, Tri Dao et al., 2023.
 * *Efficient Transformers: A Survey*, Tay et al., 2020.
 * *Training Deep Nets with Sublinear Memory Cost*, Chen et al., 2016.
 
-## Implementation Plan
-
-1. Prepare dataset
-   * Tokenize
-   * Split into train/validation
-   * Fix sequence length
-2. Implement baseline model
-   * Small GPT-like decoder-only Transformer
-   * Full FP32 model
-3. Implement BF16 optimization
-   * BF16 mixed precision
-3. Implement the model using FlashAttention
-   * Switch attention kernel
-   * Benchmark memory and speed
-   * Train for 1 epoch
-4. Windowed Attention
-   * Modify attention blocks (or call to the function) to use sliding window
-   * Evaluate trade-offs
-5. Use Gradient Checkpointing
-   * Enable checkpointing
-   * Measure memory savings and compute overhead
-5. (Optional) Use grouped KV attention.
-6. Profile memory
-   * Run 20 warm-up steps
-   * Confirm memory peak using PyTorch memory profiler
-7. Run full 1 epoch training for each setting
-   * Keep all variables identical
-8. Evaluate perplexity
-   * Use the same validation set
-9. Prepare report
-
-
-## Summary
-
-1. You will implement, train, and analyze four memory-optimization techniques for Transformers:
-* BF16 mixed precision
-* FlashAttention
-* Windowed attention
-* Gradient checkpointing
-
-For each method you must compare:
-* Memory usage
-* Maximum batch size
-* Training speed
-* Perplexity after 1 epoch
-
-The final report should present clear comparisons and discuss the practical implications of each optimization technique.
