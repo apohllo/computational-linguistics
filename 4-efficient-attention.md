@@ -15,7 +15,6 @@ You will implement **four training regimes**:
 2. **FlashAttention** (you can use FlashAttention 2 or any updated version)
 3. **Windowed (local) attention**
 4. **Gradient checkpointing**
-5. (Optional) **Grouped KV attention**
 
 Use the **same model checkpoint**, **same tokenizer**, **same dataset**, and **same training loop** structure for each experiment.
 
